@@ -22,4 +22,17 @@
         android:name="alo.android.multitests.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_wifi"
+        android:name="alo.android.multitests.ui.wifi.WifiFragment"
+        android:label="@string/menu_wifi"
+        tools:layout="@layout/fragment_wifi" />
+
+    <fragment
+        android:id="@+id/nav_draft"
+        android:name="alo.android.multitests.ui.draft.DraftFragment"
+        android:label="@string/menu_draft"
+        tools:layout="@layout/fragment_draft" />
+
 </navigation>
