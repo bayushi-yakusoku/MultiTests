@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 
 class WifiFragment : Fragment() {
 
-    private lateinit var binding : FragmentWifiBinding
     private val viewModel: WifiViewModel by viewModels()
+    private lateinit var binding : FragmentWifiBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
