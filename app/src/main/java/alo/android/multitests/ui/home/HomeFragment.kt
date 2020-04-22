@@ -1,29 +1,30 @@
 package alo.android.multitests.ui.home
 
-import alo.android.multitests.R
+import alo.android.multitests.databinding.FragmentHomeBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel : HomeViewModel by viewModels()
+    private val viewModel : HomeViewModel by viewModels()
+    private lateinit var binding : FragmentHomeBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+
+        binding.let {
+            it.lifecycleOwner = viewLifecycleOwner
+            it.viewModel = viewModel
+        }
+
+        return binding.root
     }
 }
