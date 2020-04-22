@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import timber.log.Timber
 
 class DraftFragment : Fragment() {
 
@@ -18,6 +19,8 @@ class DraftFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.d("Start")
+
         binding = FragmentDraftBinding.inflate(inflater)
 
         binding.let {
