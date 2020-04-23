@@ -15,4 +15,5 @@
     <string name="menu_wifi">Wifi</string>
     <string name="test_button_name">Click!</string>
     <string name="menu_draft">Draft</string>
+    <string name="wifi_refresh_button_name">Refresh</string>
 </resources>

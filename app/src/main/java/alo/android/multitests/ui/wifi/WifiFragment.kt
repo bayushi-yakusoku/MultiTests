@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class WifiFragment : Fragment() {
 
@@ -23,6 +24,11 @@ class WifiFragment : Fragment() {
         binding.let {
             it.lifecycleOwner = viewLifecycleOwner
             it.viewModel = viewModel
+
+            it.wifiRecyclerView.let {
+                it.adapter = WifiAdapter(viewModel.listWifi)
+                it.layoutManager = LinearLayoutManager(context)
+            }
         }
 
         return binding.root
