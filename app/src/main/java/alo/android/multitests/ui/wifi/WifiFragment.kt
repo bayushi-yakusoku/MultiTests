@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import timber.log.Timber
 
 class WifiFragment : Fragment() {
 
     private val viewModel: WifiViewModel by viewModels()
+    private val wifiAdapter = WifiAdapter()
+
     private lateinit var binding : FragmentWifiBinding
-    private lateinit var wifiAdapter : WifiAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +25,24 @@ class WifiFragment : Fragment() {
     ): View? {
         binding = FragmentWifiBinding.inflate(inflater)
 
-        wifiAdapter = WifiAdapter()
+        initialisation()
+
+        createObservers()
+
+        return binding.root
+    }
+
+    private fun createObservers() {
+        Timber.d("Start")
+
+        viewModel.listWifi.observe(viewLifecycleOwner, Observer {
+            wifiAdapter.setList(it)
+            wifiAdapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun initialisation() {
+        Timber.d("Start")
 
         binding.let {
             it.lifecycleOwner = viewLifecycleOwner
@@ -35,12 +54,9 @@ class WifiFragment : Fragment() {
                 it.layoutManager = LinearLayoutManager(context)
             }
         }
+    }
 
-        viewModel.listWifi.observe(viewLifecycleOwner, Observer {
-            wifiAdapter.setList(it)
-            wifiAdapter.notifyDataSetChanged()
-        })
-
-        return binding.root
+    init {
+        Timber.d("Start")
     }
 }
