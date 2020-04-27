@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class WifiAdapter(val listWifi : List<String>) : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
+class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
     class WifiViewHolder(val binding: ItemWifiBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WifiViewHolder {
@@ -25,7 +25,9 @@ class WifiAdapter(val listWifi : List<String>) : RecyclerView.Adapter<WifiAdapte
         }
     }
 
-    init {
+    private var listWifi : List<String> = listOf()
 
+    public fun setList(list : List<String>?) {
+        listWifi = list ?: listOf()
     }
 }

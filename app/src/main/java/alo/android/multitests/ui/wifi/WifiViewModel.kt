@@ -10,14 +10,14 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     val label : LiveData<String>
         get() = _label
 
-    private var _listWifi = mutableListOf<String>()
-    val listWifi : List<String>
+    private var _listWifi = MutableLiveData<List<String>>()
+    val listWifi : LiveData<List<String>>
         get() = _listWifi
 
     init {
         _label.value = "Yessah!"
 
-        _listWifi = mutableListOf("pouf", "paf")
+        _listWifi.value = listOf("pouf", "paf")
     }
 
     fun updateLabelByClick() {
@@ -27,6 +27,6 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     }
 
     fun refresh() {
-        _listWifi = mutableListOf("Home_tonio", "Devolo_tonio", "EDBC3-Orange")
+        _listWifi.value = listOf("Home_tonio", "Devolo_tonio", "EDBC3-Orange")
     }
 }
