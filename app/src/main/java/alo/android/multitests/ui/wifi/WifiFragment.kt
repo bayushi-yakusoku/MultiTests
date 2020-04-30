@@ -1,6 +1,7 @@
 package alo.android.multitests.ui.wifi;
 
 import alo.android.multitests.databinding.FragmentWifiBinding
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,13 +24,57 @@ class WifiFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.d("Start")
+
         binding = FragmentWifiBinding.inflate(inflater)
+
+        checkPermissions()
 
         initialisation()
 
         createObservers()
 
         return binding.root
+    }
+
+    private val MY_PERMISSIONS_REQUEST_FOR_WIFI = 1
+
+    private fun checkPermissions() {
+        Timber.d("Start")
+
+        val requiredPermissions = viewModel.missingWifiPermissions()
+
+        if (requiredPermissions.isNotEmpty()) {
+            binding.wifiRefreshButton.isEnabled = false
+
+            askWifiPermissions(requiredPermissions)
+        }
+    }
+
+    private fun askWifiPermissions(requestedPermissions : List<String>) {
+        Timber.d("Start")
+
+        requestPermissions(requestedPermissions.toTypedArray(),
+            MY_PERMISSIONS_REQUEST_FOR_WIFI)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        Timber.d("Start")
+
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_FOR_WIFI -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    binding.wifiRefreshButton.isEnabled = true
+                }
+            }
+        }
     }
 
     private fun createObservers() {
