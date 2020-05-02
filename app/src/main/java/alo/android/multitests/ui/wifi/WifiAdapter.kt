@@ -15,7 +15,12 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WifiViewHolder {
         Timber.d("Start")
 
-        return WifiViewHolder(ItemWifiBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        val binding = ItemWifiBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false)
+        
+        return WifiViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +46,7 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
             }
 
             it.wifiFrequencyTextView.text = currentContext.getString(R.string.frequency_with_unit, currentWifiItem.frequency)
+            
             it.wifiInfoTextView.text = currentWifiItem.capabilities
             it.wifiInfoTextView.isSelected = true
         }
