@@ -1,6 +1,7 @@
 package alo.android.multitests.ui.draft
 
 import alo.android.multitests.databinding.FragmentDraftBinding
+import alo.android.multitests.tool.toast
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,12 @@ class DraftFragment : Fragment() {
         binding.let {
             it.lifecycleOwner = viewLifecycleOwner
             it.viewModel = viewModel
+            
+            it.testClickImageButton.setOnClickListener {
+                context?.toast("Et Zut! " + it.isClickable + " !")
+            }
+            
+            it.testClickImageButton.isClickable = false
         }
 
         return binding.root

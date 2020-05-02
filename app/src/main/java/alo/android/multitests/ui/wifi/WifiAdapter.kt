@@ -10,10 +10,10 @@ import timber.log.Timber
 
 class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
     class WifiViewHolder(val binding: ItemWifiBinding) : RecyclerView.ViewHolder(binding.root)
-
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WifiViewHolder {
         Timber.d("Start")
-
+        
         val binding = ItemWifiBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -21,29 +21,29 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
         
         return WifiViewHolder(binding)
     }
-
+    
     override fun getItemCount(): Int {
         Timber.d("Start")
-
+        
         return listWifi.size
     }
-
+    
     override fun onBindViewHolder(holder: WifiViewHolder, position: Int) {
         Timber.d("Start")
-
+        
         val currentWifiItem = listWifi[position]
-
+        
         val currentContext = holder.itemView.context
-
+        
         holder.binding.let {
             it.wifiLabel.apply {
                 text = currentWifiItem.ssid
-
+                
                 setOnClickListener {
                     context.toast(currentWifiItem.bssid)
                 }
             }
-
+            
             it.wifiFrequencyTextView.text = currentContext.getString(R.string.frequency_with_unit, currentWifiItem.frequency)
             
             it.wifiInfoTextView.text = currentWifiItem.capabilities
@@ -51,33 +51,29 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
             
             it.wifiActivateImageButton.apply {
                 if (currentWifiItem.isConnected) {
-                    isClickable = true
-                    
                     setColorFilter(currentContext.getColor(R.color.colorAccent))
-    
+                    
                     setOnClickListener {
                         currentContext.toast("et Paf!")
                     }
                 }
                 else {
-                    isClickable = false
-    
                     setColorFilter(currentContext.getColor(R.color.colorBlack))
-    
-                    setOnClickListener(null)
+                    
+                    isClickable = false
                 }
             }
         }
     }
-
+    
     private var listWifi : List<WifiViewModel.WifiItem> = listOf()
-
+    
     fun setList(list : List<WifiViewModel.WifiItem>?) {
         Timber.d("Start")
-
+        
         listWifi = list ?: listOf()
     }
-
+    
     init {
         Timber.d("Start")
     }
