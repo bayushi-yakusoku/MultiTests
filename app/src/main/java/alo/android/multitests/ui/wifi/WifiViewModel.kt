@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
@@ -19,8 +20,8 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     val label : LiveData<String>
         get() = _label
 
-    private var _listWifi = MutableLiveData<List<String>>()
-    val listWifi : LiveData<List<String>>
+    private var _listWifi = MutableLiveData<List<ScanResult>>()
+    val listWifi : LiveData<List<ScanResult>>
         get() = _listWifi
 
     fun updateLabelByClick() {
@@ -34,7 +35,7 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     private fun refresh() {
         Timber.d("Start")
 
-        _listWifi.value = listOf("Home_tonio", "Devolo_tonio", "EDBC3-Orange")
+        _listWifi.value = listOf()
 
         requestScan()
     }
@@ -87,33 +88,25 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     private fun scanSuccess() {
         Timber.d("Start")
 
+        _label.value = "Scan success!"
+
         val results = wifiManager.scanResults
         // ... use new scan results ...
 
-        val ssidList = mutableListOf<String>("Success!!")
-
-        for (result in results) {
-            ssidList.add(result.SSID)
-        }
-
-        _listWifi.value = ssidList
+        _listWifi.value = results
     }
 
     private fun scanFailure() {
         Timber.d("Start")
 
-        val ssidList = mutableListOf<String>("Failure!!")
+        _label.value = "Scan failed!"
 
         // handle failure: new scan did NOT succeed
         // consider using old scan results: these are the OLD results!
         val results = wifiManager.scanResults
         // ... potentially use older scan results ...
 
-        for (result in results) {
-            ssidList.add(result.SSID)
-        }
-
-        _listWifi.value = ssidList
+        _listWifi.value = results
     }
 
     init {
@@ -121,7 +114,7 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
 
         _label.value = "Yessah!"
 
-        _listWifi.value = listOf("pouf", "paf")
+        _listWifi.value = listOf()
 
         wifiManager = getApplication<Application>().applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 

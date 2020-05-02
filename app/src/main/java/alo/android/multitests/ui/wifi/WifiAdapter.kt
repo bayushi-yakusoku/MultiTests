@@ -2,6 +2,7 @@ package alo.android.multitests.ui.wifi
 
 import alo.android.multitests.databinding.ItemWifiBinding
 import alo.android.multitests.tool.toast
+import android.net.wifi.ScanResult
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,23 +26,25 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
     override fun onBindViewHolder(holder: WifiViewHolder, position: Int) {
         Timber.d("Start")
 
+        val currentWifiItem = listWifi[position]
+
         holder.binding.let {
             it.wifiLabel.apply {
-                text = listWifi[position]
+                text = currentWifiItem.SSID
 
                 setOnClickListener {
-                    context.toast(listWifi[position])
+                    context.toast(currentWifiItem.BSSID)
                 }
             }
 
-            it.wifiFrequencyTextView.text = "12 GHz"
-            it.wifiInfoTextView.text = "WPA/WPA2 PSK"
+            it.wifiFrequencyTextView.text = currentWifiItem.frequency.toString()
+            it.wifiInfoTextView.text = currentWifiItem.capabilities
         }
     }
 
-    private var listWifi : List<String> = listOf()
+    private var listWifi : List<ScanResult> = listOf()
 
-    public fun setList(list : List<String>?) {
+    fun setList(list : List<ScanResult>?) {
         Timber.d("Start")
 
         listWifi = list ?: listOf()
