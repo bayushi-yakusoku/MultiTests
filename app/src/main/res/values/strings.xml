@@ -17,4 +17,6 @@
     <string name="menu_draft">Draft</string>
     <string name="wifi_refresh_button_name">Refresh</string>
     <string name="wifi_activate_contentDescription">Activate State</string>
+
+    <string name="frequency_with_unit">%d MHz</string>
 </resources>

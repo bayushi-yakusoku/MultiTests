@@ -1,5 +1,6 @@
 package alo.android.multitests.ui.wifi
 
+import alo.android.multitests.R
 import alo.android.multitests.databinding.ItemWifiBinding
 import alo.android.multitests.tool.toast
 import android.net.wifi.ScanResult
@@ -28,6 +29,8 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
 
         val currentWifiItem = listWifi[position]
 
+        val currentContext = holder.itemView.context
+
         holder.binding.let {
             it.wifiLabel.apply {
                 text = currentWifiItem.SSID
@@ -37,8 +40,9 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
                 }
             }
 
-            it.wifiFrequencyTextView.text = currentWifiItem.frequency.toString()
+            it.wifiFrequencyTextView.text = currentContext.getString(R.string.frequency_with_unit, currentWifiItem.frequency)
             it.wifiInfoTextView.text = currentWifiItem.capabilities
+            it.wifiInfoTextView.isSelected = true
         }
     }
 
