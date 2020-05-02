@@ -20,8 +20,8 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
     val label : LiveData<String>
         get() = _label
 
-    private var _listWifi = MutableLiveData<List<ScanResult>>()
-    val listWifi : LiveData<List<ScanResult>>
+    private var _listWifi = MutableLiveData<List<WifiItem>>()
+    val listWifi : LiveData<List<WifiItem>>
         get() = _listWifi
 
     fun updateLabelByClick() {
@@ -90,23 +90,33 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
 
         _label.value = "Scan success!"
 
+        val tmp = wifiManager.connectionInfo
+        
         val results = wifiManager.scanResults
         // ... use new scan results ...
-
-        _listWifi.value = results
+        
+        _listWifi.value = results.map {
+            val status = it.BSSID == tmp.bssid
+            it.toWifiItem(status)
+        }
     }
 
     private fun scanFailure() {
         Timber.d("Start")
 
         _label.value = "Scan failed!"
-
+    
+        val tmp = wifiManager.connectionInfo
+        
         // handle failure: new scan did NOT succeed
         // consider using old scan results: these are the OLD results!
         val results = wifiManager.scanResults
         // ... potentially use older scan results ...
-
-        _listWifi.value = results
+        
+        _listWifi.value = results.map {
+            val status = it.BSSID == tmp.bssid
+            it.toWifiItem(status)
+        }
     }
 
     init {
@@ -129,4 +139,18 @@ class WifiViewModel (application: Application) : AndroidViewModel(application) {
             }
         }
     }
+    
+    data class WifiItem(
+            val ssid : String,
+            val bssid : String,
+            val frequency : Int,
+            val capabilities : String = "",
+            var isConnected : Boolean = false
+    )
+}
+
+fun ScanResult.toWifiItem(isConnected: Boolean = false) : WifiViewModel.WifiItem {
+    val wifiItem = WifiViewModel.WifiItem(SSID, BSSID, frequency, capabilities, isConnected)
+    
+    return wifiItem
 }

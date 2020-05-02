@@ -3,7 +3,6 @@ package alo.android.multitests.ui.wifi
 import alo.android.multitests.R
 import alo.android.multitests.databinding.ItemWifiBinding
 import alo.android.multitests.tool.toast
-import android.net.wifi.ScanResult
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -38,10 +37,10 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
 
         holder.binding.let {
             it.wifiLabel.apply {
-                text = currentWifiItem.SSID
+                text = currentWifiItem.ssid
 
                 setOnClickListener {
-                    context.toast(currentWifiItem.BSSID)
+                    context.toast(currentWifiItem.bssid)
                 }
             }
 
@@ -49,12 +48,31 @@ class WifiAdapter() : RecyclerView.Adapter<WifiAdapter.WifiViewHolder>() {
             
             it.wifiInfoTextView.text = currentWifiItem.capabilities
             it.wifiInfoTextView.isSelected = true
+            
+            it.wifiActivateImageButton.apply {
+                if (currentWifiItem.isConnected) {
+                    isClickable = true
+                    
+                    setColorFilter(currentContext.getColor(R.color.colorAccent))
+    
+                    setOnClickListener {
+                        currentContext.toast("et Paf!")
+                    }
+                }
+                else {
+                    isClickable = false
+    
+                    setColorFilter(currentContext.getColor(R.color.colorBlack))
+    
+                    setOnClickListener(null)
+                }
+            }
         }
     }
 
-    private var listWifi : List<ScanResult> = listOf()
+    private var listWifi : List<WifiViewModel.WifiItem> = listOf()
 
-    fun setList(list : List<ScanResult>?) {
+    fun setList(list : List<WifiViewModel.WifiItem>?) {
         Timber.d("Start")
 
         listWifi = list ?: listOf()
