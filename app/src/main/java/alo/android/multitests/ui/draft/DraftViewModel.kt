@@ -8,16 +8,30 @@ import timber.log.Timber
 
 class DraftViewModel(application: Application) : AndroidViewModel(application) {
     private var _label = MutableLiveData<String>()
-    val label : LiveData<String>
+    val label: LiveData<String>
         get() = _label
-
+    
     init {
-        Timber.d("Start")
-        _label.value = "Yessah!"
+        Timber.d("Init")
+        
+        init()
     }
-
+    
+    private fun init() {
+        Timber.d("Start")
+        
+        _label.value = "Init..."
+    }
+    
     fun updateLabelByClick() {
         Timber.d("Start")
+        
         _label.value = "Clicked!"
+    }
+
+    fun clean() {
+        Timber.d("Start")
+        
+        init()
     }
 }
