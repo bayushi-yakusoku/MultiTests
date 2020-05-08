@@ -24,5 +24,9 @@
             android:id="@+id/nav_draft"
             android:icon="@drawable/ic_menu_draft"
             android:title="@string/menu_draft" />
+        <item
+            android:id="@+id/nav_speech"
+            android:icon="@drawable/ic_menu_speech"
+            android:title="@string/menu_speech" />
     </group>
 </menu>

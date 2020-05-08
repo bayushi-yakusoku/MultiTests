@@ -19,4 +19,5 @@
     <string name="wifi_activate_contentDescription">Activate State</string>
 
     <string name="frequency_with_unit">%d MHz</string>
+    <string name="menu_speech">Speech</string>
 </resources>

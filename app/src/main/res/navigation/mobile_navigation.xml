@@ -35,4 +35,10 @@
         android:label="@string/menu_draft"
         tools:layout="@layout/fragment_draft" />
 
+    <fragment
+        android:id="@+id/nav_speech"
+        android:name="alo.android.multitests.ui.speech.SpeechFragment"
+        android:label="@string/menu_speech"
+        tools:layout="@layout/fragment_speech" />
+
 </navigation>
