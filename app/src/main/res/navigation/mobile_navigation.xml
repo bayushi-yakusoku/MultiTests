@@ -35,4 +35,10 @@
         android:label="@string/menu_draft"
         tools:layout="@layout/fragment_draft" />
 
+    <fragment
+        android:id="@+id/nav_card"
+        android:name="alo.android.multitests.ui.flipcard.FlipCardFragment"
+        android:label="fragment_flipcard"
+        tools:layout="@layout/fragment_flipcard" />
+
 </navigation>
