@@ -35,37 +35,42 @@ class FlipCardFragment : Fragment() {
         binding.frontCardImageView.setOnClickListener {
             context?.toast("Click on Front!")
     
-            when (isFront) {
-                true -> frontToBackAnim()
-                false -> backToFrontAnim()
-            }
+            frontToBackAnim()
         }
         
         binding.backCardImageView.setOnClickListener {
             context?.toast("Click on Back!!")
+            
+            backToFrontAnim()
         }
         
         return binding.root
     }
     
     private fun frontToBackAnim() {
-        cardFrontAnimator.setTarget(binding.frontCardImageView)
-        cardBackAnimator.setTarget(binding.backCardImageView)
+        cardFrontAnimator.setTarget(binding.frontCardLayout)
+//        cardBackAnimator.setTarget(binding.backCardImageView)
         
         cardFrontAnimator.start()
-        cardBackAnimator.start()
+//        cardBackAnimator.start()
+        
+        binding.frontCardImageView.isClickable = false
+        binding.backCardImageView.isClickable = true
         
         isFront = false
     }
     
     private fun backToFrontAnim() {
     
-        cardFrontAnimator.setTarget(binding.backCardImageView)
-        cardBackAnimator.setTarget(binding.frontCardImageView)
+//        cardFrontAnimator.setTarget(binding.backCardImageView)
+        cardBackAnimator.setTarget(binding.frontCardLayout)
     
-        cardFrontAnimator.start()
+//        cardFrontAnimator.start()
         cardBackAnimator.start()
-        
+    
+        binding.frontCardImageView.isClickable = true
+        binding.backCardImageView.isClickable = false
+    
         isFront = true
     }
 }

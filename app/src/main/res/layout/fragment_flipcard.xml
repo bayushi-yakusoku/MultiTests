@@ -7,6 +7,7 @@
     tools:context=".ui.flipcard.FlipCardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frontCard_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,6 +42,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/front" />
+
+        <TextView
+            android:id="@+id/frontCard_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Front"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backCard_imageView" />
+
+        <EditText
+            android:id="@+id/frontCard_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="@string/hint_card_editText"
+            android:ems="10"
+            android:hint="@string/hint_card_editText"
+            android:inputType="text"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frontCard_label_textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
