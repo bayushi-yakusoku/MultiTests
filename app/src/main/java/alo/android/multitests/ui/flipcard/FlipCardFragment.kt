@@ -9,13 +9,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.addListener
 import androidx.fragment.app.Fragment
 
 class FlipCardFragment : Fragment() {
     
     lateinit var binding : FragmentFlipcardBinding
-    
-    var isFront : Boolean = true
     
     lateinit var cardFrontAnimator : Animator
     lateinit var cardBackAnimator : Animator
@@ -25,11 +24,14 @@ class FlipCardFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        isFront = true
-    
         cardFrontAnimator = AnimatorInflater.loadAnimator(context, R.animator.front_card_animation)
         cardBackAnimator = AnimatorInflater.loadAnimator(context, R.animator.back_card_animation)
-        
+    
+        cardFrontAnimator.addListener(onEnd = {
+            cardBackAnimator.start()
+        })
+    
+    
         binding = FragmentFlipcardBinding.inflate(inflater, container, false)
         
         binding.frontCardImageView.setOnClickListener {
@@ -49,28 +51,22 @@ class FlipCardFragment : Fragment() {
     
     private fun frontToBackAnim() {
         cardFrontAnimator.setTarget(binding.frontCardLayout)
-//        cardBackAnimator.setTarget(binding.backCardImageView)
+        cardBackAnimator.setTarget(binding.backCardLayout)
         
         cardFrontAnimator.start()
-//        cardBackAnimator.start()
         
         binding.frontCardImageView.isClickable = false
         binding.backCardImageView.isClickable = true
-        
-        isFront = false
     }
     
     private fun backToFrontAnim() {
     
-//        cardFrontAnimator.setTarget(binding.backCardImageView)
+        cardFrontAnimator.setTarget(binding.backCardLayout)
         cardBackAnimator.setTarget(binding.frontCardLayout)
-    
-//        cardFrontAnimator.start()
-        cardBackAnimator.start()
+        
+        cardFrontAnimator.start()
     
         binding.frontCardImageView.isClickable = true
         binding.backCardImageView.isClickable = false
-    
-        isFront = true
     }
 }

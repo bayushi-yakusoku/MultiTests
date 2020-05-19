@@ -21,4 +21,5 @@
     <string name="frequency_with_unit">%d MHz</string>
     <string name="card_front_content_description">Front</string>
     <string name="hint_card_editText">Blabla</string>
+    <string name="card_back_content_description">Back</string>
 </resources>
