@@ -2,7 +2,9 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".ui.wifi.WifiFragment">
 
     <data>
         <variable
@@ -12,8 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.wifi.WifiFragment">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/text_wifi"

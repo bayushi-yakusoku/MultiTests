@@ -35,4 +35,10 @@
         android:label="@string/menu_draft"
         tools:layout="@layout/fragment_draft" />
 
+    <fragment
+        android:id="@+id/nav_json"
+        android:name="alo.android.multitests.ui.json.JsonFragment"
+        android:label="@string/menu_json"
+        tools:layout="@layout/fragment_json" />
+
 </navigation>
