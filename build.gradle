@@ -10,6 +10,15 @@ buildscript {
         lifecycle_version = '2.2.0'
         navigation_version = '2.2.2'
         timber_version = '4.7.1'
+
+        // versions des outils de test
+        androidXTestCore_version = '1.2.0'
+        androidXTestExtKotlinRunner_version = '1.1.1'
+        archTesting_version = '2.1.0'
+        espresso_version = '3.3.0-rc01'
+        junit_version = '4.13'
+        robolectric_version = '4.3.1'
+        truth_version = '1.0.1'
     }
 
     repositories {
