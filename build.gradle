@@ -11,6 +11,8 @@ buildscript {
         navigation_version = '2.2.2'
         timber_version = '4.7.1'
 
+        klaxon_version = '5.2'
+
         // versions des outils de test
         androidXTestCore_version = '1.2.0'
         androidXTestExtKotlinRunner_version = '1.1.1'

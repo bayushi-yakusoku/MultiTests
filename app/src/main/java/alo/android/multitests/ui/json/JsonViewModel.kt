@@ -5,4 +5,5 @@ import androidx.lifecycle.AndroidViewModel
 
 class JsonViewModel(application: Application) : AndroidViewModel(application) {
     val label = "Label du fragment Json"
+    
 }
