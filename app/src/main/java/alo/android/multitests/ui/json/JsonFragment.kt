@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 
 class JsonFragment : Fragment() {
     
@@ -25,6 +26,18 @@ class JsonFragment : Fragment() {
             it.viewModel = viewModel
             it.lifecycleOwner = viewLifecycleOwner
         }
+        
+        binding.writeButton.setOnClickListener {
+            viewModel.write(binding.questionEditText.text.toString(), binding.answerEditText.text.toString())
+        }
+        
+        binding.readButton.setOnClickListener {
+            viewModel.read()
+        }
+        
+        viewModel.content.observe(viewLifecycleOwner, Observer {
+            binding.fileContentTextView.text = it
+        })
         
         return binding.root
     }

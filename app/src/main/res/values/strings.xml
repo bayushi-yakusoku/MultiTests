@@ -21,4 +21,9 @@
     <string name="wifi_activate_contentDescription">Activate State</string>
 
     <string name="frequency_with_unit">%d MHz</string>
+    <string name="write_button_label">Write</string>
+    <string name="read_button_label">Read</string>
+    <string name="hint_file_content_text">file content</string>
+    <string name="question_hint">Question</string>
+    <string name="answer_hint">Answer</string>
 </resources>
