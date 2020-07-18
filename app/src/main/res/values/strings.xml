@@ -26,4 +26,9 @@
     <string name="hint_file_content_text">file content</string>
     <string name="question_hint">Question</string>
     <string name="answer_hint">Answer</string>
+    <string name="menu_speech">Speech</string>
+    <string name="description_speak_button">Speak!</string>
+    <string name="description_listen_button">Listen!</string>
+    <string name="pitch_label">Pitch</string>
+    <string name="speed_label">Speed</string>
 </resources>

@@ -41,4 +41,10 @@
         android:label="@string/menu_json"
         tools:layout="@layout/fragment_json" />
 
+    <fragment
+        android:id="@+id/nav_speech"
+        android:name="alo.android.multitests.ui.speech.SpeechFragment"
+        android:label="@string/menu_speech"
+        tools:layout="@layout/fragment_speech" />
+
 </navigation>

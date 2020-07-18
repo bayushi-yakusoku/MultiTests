@@ -28,5 +28,9 @@
             android:id="@+id/nav_json"
             android:icon="@drawable/ic_menu_json"
             android:title="@string/menu_json" />
+        <item
+            android:id="@+id/nav_speech"
+            android:icon="@drawable/ic_menu_speech"
+            android:title="@string/menu_speech" />
     </group>
 </menu>
