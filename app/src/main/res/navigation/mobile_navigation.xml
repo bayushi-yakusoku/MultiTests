@@ -33,7 +33,16 @@
         android:id="@+id/nav_draft"
         android:name="alo.android.multitests.ui.draft.DraftFragment"
         android:label="@string/menu_draft"
-        tools:layout="@layout/fragment_draft" />
+        tools:layout="@layout/fragment_draft" >
+        <action
+            android:id="@+id/action_nav_draft_to_draftDetailsFragment"
+            app:destination="@id/draftDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/draftDetailsFragment"
+        android:name="alo.android.multitests.ui.draft.DraftDetailsFragment"
+        android:label="fragment_draft_details"
+        tools:layout="@layout/fragment_draft_details" />
 
     <fragment
         android:id="@+id/nav_json"

@@ -2,7 +2,8 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.draft.DraftFragment">
 
     <data>
         <variable
@@ -12,8 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.draft.DraftFragment">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/text_draft"
@@ -34,11 +34,21 @@
             android:id="@+id/wifi_refresh_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/test_button_name"
+            android:layout_marginTop="8dp"
             android:onClick="@{() -> viewModel.updateLabelByClick()}"
+            android:text="@string/test_button_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_draft" />
+
+        <Button
+            android:id="@+id/navigate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/navigate_button"
+            app:layout_constraintStart_toStartOf="@+id/wifi_refresh_button"
+            app:layout_constraintTop_toBottomOf="@+id/wifi_refresh_button" />
 
         <ImageButton
             android:id="@+id/test_click_imageButton"

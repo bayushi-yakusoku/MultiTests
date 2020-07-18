@@ -31,4 +31,6 @@
     <string name="description_listen_button">Listen!</string>
     <string name="pitch_label">Pitch</string>
     <string name="speed_label">Speed</string>
+
+    <string name="navigate_button">Navigate</string>
 </resources>
