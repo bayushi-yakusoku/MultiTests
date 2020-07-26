@@ -21,6 +21,11 @@
     <string name="wifi_activate_contentDescription">Activate State</string>
 
     <string name="frequency_with_unit">%d MHz</string>
+
+    <string name="card_front_content_description">Front</string>
+    <string name="hint_card_editText">Blabla</string>
+    <string name="card_back_content_description">Back</string>
+
     <string name="write_button_label">Write</string>
     <string name="read_button_label">Read</string>
     <string name="hint_file_content_text">file content</string>

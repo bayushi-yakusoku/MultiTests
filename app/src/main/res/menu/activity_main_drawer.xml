@@ -25,6 +25,10 @@
             android:icon="@drawable/ic_menu_draft"
             android:title="@string/menu_draft" />
         <item
+            android:id="@+id/nav_card"
+            android:icon="@drawable/ic_menu_card"
+            android:title="Card"/>
+        <item
             android:id="@+id/nav_json"
             android:icon="@drawable/ic_menu_json"
             android:title="@string/menu_json" />

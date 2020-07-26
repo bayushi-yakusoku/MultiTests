@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_slideshow,
                 R.id.nav_wifi,
                 R.id.nav_draft,
+                R.id.nav_card,
                 R.id.nav_json,
                 R.id.nav_speech),
             drawerLayout)
